@@ -2,37 +2,11 @@
 <html>
 <head>
   <title>ㅇㄴㅂㄷ</title>
-  <!-- Required Meta Tags Always Come First -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="../../favicon.ico">
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:300,400,700%7COpen+Sans:400,600,700">
-
-  <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="../../assets/vendor/bootstrap/bootstrap.min.css">
-
-  <!-- CSS Implementing Plugins -->
-  <link rel="stylesheet" href="../../assets/vendor/font-awesome.min.css">
-  <link rel="stylesheet" href="../../assets/vendor/simple-line-icons.css">
-  <link rel="stylesheet" href="../../assets/vendor/icon-line-pro/style.css">
-  <link rel="stylesheet" href="../../assets/vendor/icon-hs/style.css">
-  <link rel="stylesheet" href="../../assets/vendor/animate.css">
-  <link rel="stylesheet" href="../../assets/vendor/hs.megamenu.css">
-  <link rel="stylesheet" href="../../assets/vendor/hamburgers.min.css">
-  <link rel="stylesheet" href="../../assets/vendor/slick.css">
-  <link rel="stylesheet" href="../../assets/vendor/jquery.fancybox.css">
-
-  <!-- CSS Unify Theme -->
-  <link rel="stylesheet" href="assets/vendor/styles.bm-classic.css">
-
-  <!-- CSS Customization -->
-  <link rel="stylesheet" href="../../assets/vendor/custom.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
+
 <body>
   <!-- Header -->
   <header id="js-header" class="u-header u-header--static u-shadow-v19">
@@ -1044,120 +1018,10 @@
   </header>
   <!-- End Header -->
 
+  <%= render 'shared/nav' %>
+  <%= yield %>
+  <%= render 'shared/footer'%>
+  <%= yield :scripts %>
 
-  <!-- <%= render 'layouts/flash'%>
-  <%= render 'layouts/navbar' %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> -->
-
-  <div class="container /rander">
-    <%= yield %>
-  </div>    <div class="u-outer-spaces-helper"></div>
-
-      <!-- JS Global Compulsory -->
-      <script src="../../assets/vendor/jquery.min.js"></script>
-      <script src="../../assets/vendor/jquery-migrate.min.js"></script>
-      <script src="../../assets/vendor/popper.js/index.js"></script>
-      <script src="../../assets/vendor/bootstrap.min.js"></script>
-
-      <!-- JS Implementing Plugins -->
-      <script src="../../assets/vendor/appear.js"></script>
-      <script src="../../assets/vendor/slick.js"></script>
-      <script src="../../assets/vendor/hs.megamenu.js"></script>
-      <script src="../../assets/vendor/jquery.fancybox.min.js"></script>
-
-      <!-- JS Unify -->
-      <script src="../../assets/vendor/hs.core.js"></script>
-      <script src="../../assets/vendor/components/hs.header.js"></script>
-      <script src="../../assets/vendor/hs.hamburgers.js"></script>
-      <script src="../../assets/vendorcomponents/hs.dropdown.js"></script>
-      <script src="../../assets/vendor/hs.height-calc.js"></script>
-      <script src="../../assets/vendor/components/hs.carousel.js"></script>
-      <script src="../../assets/vendor/components/hs.go-to.js"></script>
-      <script src="../../assets/vendor/components/hs.popup.js"></script>
-      <script src="../../assets/vendor/components/hs.sticky-block.js"></script>
-
-      <!-- JS Customization -->
-      <script src="../../assets/vendor/custom.js"></script>
-
-      <!-- JS Plugins Init. -->
-      <script>
-        $(document).on('ready', function () {
-          // initialization of header
-          $.HSCore.components.HSHeader.init($('#js-header'));
-          $.HSCore.helpers.HSHamburgers.init('.hamburger');
-
-          // initialization of MegaMenu
-          $('.js-mega-menu').HSMegaMenu();
-
-          // initialization of HSDropdown component
-          $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
-            afterOpen: function () {
-              $(this).find('input[type="search"]').focus();
-            }
-          });
-
-          // initialization of header's height equal offset
-          $.HSCore.helpers.HSHeightCalc.init();
-
-          // initialization of carousel
-          $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
-
-          $('#carouselCus1').slick('setOption', 'responsive', [{
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 2
-            }
-          }, {
-            breakpoint: 992,
-            settings: {
-              slidesToShow: 1
-            }
-          }, {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 2
-            }
-          }, {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1
-            }
-          }], true);
-
-          $('#carouselCus2').slick('setOption', 'responsive', [{
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 4
-            }
-          }, {
-            breakpoint: 992,
-            settings: {
-              slidesToShow: 3
-            }
-          }, {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 2
-            }
-          }, {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1
-            }
-          }], true);
-
-          // initialization of popups
-          $.HSCore.components.HSPopup.init('.js-fancybox');
-
-          // initialization of go to
-          $.HSCore.components.HSGoTo.init('.js-go-to');
-        });
-
-        $(window).on('load', function () {
-          // initialization of sticky blocks
-          $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
-        });
-      </script>
 </body>
 </html>
