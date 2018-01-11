@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @rent_post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @rent_post.content %>
+</p>
+
+
+<p>
+  <strong>Username:</strong>
+  <%= @rent_post.username %>
+</p>
+
+
+<%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
+<%= link_to 'Back', rent_posts_path %>
