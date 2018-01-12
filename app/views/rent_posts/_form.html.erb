@@ -1,0 +1,17 @@
+<%= form_for(@rent_post) do |f| %>
+  <% if @rent_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rent_post.errors.count, "error") %> prohibited this rent_post from being saved:</h2>
+
+      <ul>
+      <% @rent_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

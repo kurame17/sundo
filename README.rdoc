@@ -1,0 +1,14 @@
+== README
+
+* homes 컨트롤러에 index
+
+* rent_posts
+
+* auction_posts 컨트롤러는 scaffold로 생성
+
+* devise로 회원 가입 기능 생성
+
+
+
+
+<tt>rake doc:app</tt>.
