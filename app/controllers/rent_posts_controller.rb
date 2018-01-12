@@ -69,6 +69,6 @@ class RentPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rent_post_params
-      params.fetch(:rent_post, {})
+      params.require(:rent_post).permit(:title, :content, :img, :category)
     end
 end
