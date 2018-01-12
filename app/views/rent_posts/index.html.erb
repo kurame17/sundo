@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rent Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rent_posts.each do |rent_post| %>
+      <tr>
+        <td><%= link_to 'Show', rent_post %></td>
+        <td><%= link_to 'Edit', edit_rent_post_path(rent_post) %></td>
+        <td><%= link_to 'Destroy', rent_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rent post', new_rent_post_path %>
