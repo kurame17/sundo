@@ -166,3 +166,10 @@ Started GET "/assets/homes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde45
 
 
 Started GET "/assets/auction_posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2018-01-12 15:03:07 +0900
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-12 15:43:42 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomesController#index as HTML
+  Rendered homes/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 683ms (Views: 663.2ms | ActiveRecord: 0.0ms)
