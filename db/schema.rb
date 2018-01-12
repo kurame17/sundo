@@ -14,6 +14,10 @@
 ActiveRecord::Schema.define(version: 20180112054420) do
 
   create_table "auction_posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "category"
+    t.string   "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +41,10 @@ ActiveRecord::Schema.define(version: 20180112054420) do
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
 
   create_table "rent_posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "category"
+    t.string   "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

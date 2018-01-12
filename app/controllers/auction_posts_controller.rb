@@ -69,6 +69,6 @@ class AuctionPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auction_post_params
-      params.fetch(:auction_post, {})
+      params.require(:auction_post).permit(:title, :content, :img, :category)
     end
 end
