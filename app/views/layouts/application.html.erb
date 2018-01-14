@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Anabada</title>
+  <title>ㅇㄴㅂㄷ</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <li align = "right"><a href="/">홈으로</a></li>
   <% if user_signed_in? %>
   <li align = "right">
-    <%= current_user.email %>님
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    <%= link_to('로그아웃', destroy_user_session_path, method: :delete) %>
   </li>
   <% else %>
   <li align = "right">
-    <%= link_to('Login', new_user_session_path) %>
+    <%= link_to('로그인', new_user_session_path) %>
     <%= link_to('회원가입', new_user_registration_path)%>
   </li>
   <% end %>

@@ -8,8 +8,9 @@
         <div class="row align-items-center">
           <!-- Logo -->
           <div class="col-md-3 g-hidden-md-down">
-            <a href="bm-classic-home-page-1.html" class="navbar-brand">
-              <img src="assets/img/logo.png" alt="Logo">
+            <a href="/" class="navbar-brand">
+              <img src="assets/img/logo.png">
+               <img class="img-fluid" src="<%= asset_path 'img-temp/600x450/img1.jpg' %>" alt="Image Description">
             </a>
           </div>
           <!-- End Logo -->
@@ -17,10 +18,10 @@
           <!-- Subscribe Form -->
           <div class="col-6 col-md-5">
             <form class="input-group rounded">
-              <input class="form-control w-100 g-brd-secondary-light-v2 g-brd-primary--focus g-color-secondary-dark-v1 g-placeholder-secondary-dark-v1 g-bg-white g-font-weight-400 g-font-size-13 rounded g-px-20 g-py-12" type="text" placeholder="Search the entire site">
+              <input class="form-control w-100 g-brd-secondary-light-v2 g-brd-primary--focus g-color-secondary-dark-v1 g-placeholder-secondary-dark-v1 g-bg-white g-font-weight-400 g-font-size-13 rounded g-px-20 g-py-12" type="text" placeholder="오늘은 무엇을 찾아볼까요?">
               <span class="input-group-addon g-brd-none g-py-0 g-pr-0">
                 <button class="btn u-btn-white g-color-primary--hover g-bg-secondary g-font-weight-600 g-font-size-13 text-uppercase rounded g-py-12 g-px-20" type="submit">
-                  <span class="g-hidden-md-down">Search</span>
+                  <span class="g-hidden-md-down">검색</span>
                   <i class="g-hidden-lg-up fa fa-search"></i>
                 </button>
               </span>
@@ -41,11 +42,9 @@
                data-dropdown-hide-on-scroll="false"
                data-dropdown-animation-in="fadeIn"
                data-dropdown-animation-out="fadeOut">
-              <div class="d-flex g-width-30 g-height-30 mr-2">
-                <img class="img-fluid rounded-circle" src="assets/img-temp/100x100/img11.jpg" alt="Image Description">
-              </div>
+
               <div class="media-body">
-                <span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">유저이름</span>
+                <span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">  <%= current_user.email %> </span>
               </div>
             </a>
 
