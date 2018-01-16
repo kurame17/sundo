@@ -13,7 +13,8 @@
 <button type="button" class="btn btn-warning" id="like-button"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
 
 <% else %>
-<button type="button" class="btn btn-light" id="like-button"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+<button type="button" class="btn btn-light" id="like-button"><i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+<%= link_to "<i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)".html_safe, "/posts/#{@post.id}/like", data: {remote: true, method: "POST"}, class: "btn btn-light" %>
 <% end %>
 
 <p>
@@ -54,10 +55,8 @@ $(function(){
   // 1.좋아요 버튼을 클릭하면
     $('#like-button').on('click', function(){
       console.log("버튼 눌리나?");
-      $.ajax({
-        url: '/posts/<%= @post.id %>/like',
-        method: 'POST'
-      });
+      var tt = [1,2,3]
+
     });
 });
 </script>
