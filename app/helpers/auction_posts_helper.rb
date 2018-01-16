@@ -1,2 +1,0 @@
-module AuctionPostsHelper
-end

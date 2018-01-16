@@ -10,13 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery-migrate
 //= require jquery_ujs
 //= require popper.min
 //= require bootstrap
 //= require turbolinks
-//= require appear
+
 //= require hs.megamenu
 
 //= require ui/widget
@@ -36,13 +37,10 @@
 
 //= require components/hs.header
 //= require hs.hamburgers
-//= require hs.height-calc
 //= require components/hs.dropdown
-
 //= require components/hs.slider
 //= require components/hs.select
 //= require components/hs.carousel
 //= require components/hs.popup
 //= require components/hs.datepicker
 //= require components/hs.go-to
-//= require components/hs.sticky-block
