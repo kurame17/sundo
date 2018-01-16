@@ -1,4 +1,4 @@
-##선도인력 해커톤 기획서
+## 선도인력 해커톤 기획서
 
 
 
@@ -52,7 +52,8 @@
 #### - MODEL
 
 > - user --> 관리자 권한 추가 필요 ( is_admin? )
-> - post
+> - post --> post_boardtype 추가
+> - comment
 
 
 ####- VIEW  
@@ -62,4 +63,4 @@
 #### - CONTROLLER
 
 > - homes controller --> 메인 화면과 사이트 설명서를 포함
-> - posts controller --> current_user 확인하고 로그인 되어있어야 글쓰기 가능하게하는 필터링 필요, 사진 기능 추가필요 (관련 젬파일 이미 설치되어 있음) , 덧글 기능도 추가해야함!
+> - posts controller --> 추천 기능 추가

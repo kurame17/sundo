@@ -69,6 +69,7 @@ end
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /posts/1
@@ -103,7 +104,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :postimage)
     end
 
     def is_post_owner?

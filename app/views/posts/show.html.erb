@@ -14,7 +14,7 @@
 
 <% else %>
 <button type="button" class="btn btn-light" id="like-button"><i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
-<%= link_to "<i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)".html_safe, "/posts/#{@post.id}/like", data: {remote: true, method: "POST"}, class: "btn btn-light" %>
+<%= link_to "좋아요", "/posts/#{@post.id}/like", data: {remote: true, method: "POST"}, class: "" %>
 <% end %>
 
 <p>
