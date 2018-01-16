@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   root 'homes#index'
+
   resources :posts
-  devise_for :users
+
+  devise_for :users, controllers: {
+    session: 'users/sessions'
+  }
+
+  post '/posts/:id/add_comment' => 'posts#add_comment'
+  delete 'posts/:id/destroy_comment/:comment_id' => 'posts#destroy_comment'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

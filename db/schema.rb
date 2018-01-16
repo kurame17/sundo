@@ -14,12 +14,16 @@
 ActiveRecord::Schema.define(version: 20180116024856) do
 
   create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
+    t.string   "postimage"
     t.text     "content"
     t.integer  "boardtype"
     t.integer  "category"
@@ -33,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180116024856) do
     t.string   "encrypted_password",     default: "", null: false
     t.string   "nickname"
     t.string   "name"
+    t.string   "address"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

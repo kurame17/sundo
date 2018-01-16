@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index,:show]
   # GET /posts
   # GET /posts.json
   def index
@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = Comment.all
   end
 
   # GET /posts/new
@@ -17,6 +18,21 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def add_comment
+    comment = current_user.comments.new
+    comment.post_id = params[:post_id]
+    comment.content = params[:content]
+    comment.save
+    redirect_to :back
+  end
+
+  def destroy_comment
+
+    @comment = Comment.find(params[:comment_id])
+    @comment.destroy
+    redirect_to :back
+
+  end
   # GET /posts/1/edit
   def edit
   end
@@ -71,4 +87,15 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :content)
     end
+
+    def is_post_owner?
+      unless @post.user_id == current_user.id
+
+      flash[:alert] = "글 주인만 할 수 있어"
+      redirect_to :back
+
+      end
+    end
+
+
 end
