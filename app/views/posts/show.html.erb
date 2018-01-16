@@ -2,11 +2,19 @@
 
   <figure class="figure">
 
-    <figcaption class="figure-caption text-center">제목: <%= @post.title %><br />
+    <h2><figcaption class="figure-caption text-center">제목: <%= @post.title %><br /></h2>
       <p>내용 : <%= @post.content%></p>
     </figcaption>
   </figure>
 </div>
+
+<!-- like버튼 추가 -->
+<% if @like.count > 0%>
+<button type="button" class="btn btn-warning" id="like-button"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+
+<% else %>
+<button type="button" class="btn btn-light" id="like-button"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+<% end %>
 
 <p>
   <h5>댓글창</h5>
@@ -40,3 +48,16 @@
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<script>
+$(function(){
+  // 1.좋아요 버튼을 클릭하면
+    $('#like-button').on('click', function(){
+      console.log("버튼 눌리나?");
+      $.ajax({
+        url: '/posts/<%= @post.id %>/like',
+        method: 'POST'
+      });
+    });
+});
+</script>

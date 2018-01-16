@@ -11,7 +11,25 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = Comment.all
+    if user_signed_in?
+      @like = Like.where(user_id: current_user.id, post_id: @post.id)
+    else
+      @like = []
+    end
   end
+
+  def like_post
+  user_like = Like.where(user_id: current_user.id, post_id: @post.id)
+  if user_like.count > 0
+    user_like.first.destroy
+  else
+    Like.create(
+      user_id: current_user.id,
+      post_id: @post.id
+    )
+  end
+  @like = Post.find(@post.id).likes.count
+end
 
   # GET /posts/new
   def new

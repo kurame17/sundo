@@ -16,7 +16,6 @@
 //= require jquery_ujs
 //= require popper.min
 //= require bootstrap
-//= require turbolinks
 
 //= require hs.megamenu
 

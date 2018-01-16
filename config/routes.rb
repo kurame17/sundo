@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     session: 'users/sessions'
   }
 
+  #comment
   post '/posts/:id/add_comment' => 'posts#add_comment'
   delete 'posts/:id/destroy_comment/:comment_id' => 'posts#destroy_comment'
 
+  #like
+  post '/posts/:id/like' => 'posts#like_post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
