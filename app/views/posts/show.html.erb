@@ -14,6 +14,7 @@
 <%@post.comments.each do |comment|%>
   <p><%=comment.content%></p>
   <p><%=comment.created_at%></p>
+  <p><%=comment.user.email%></p>
   <p class = "text-right"><a href="/posts/<%=@post.id%>/destroy_comment/<%=comment.id%>" data-method="delete" data-confirm="덧글 삭제할래?">X</a></p>
   <hr />
 <%end%>
@@ -28,15 +29,11 @@
 
 
 <hr />
-
+<!--
   <p class = "text-right"><a href="/posts/<%=@post.id%>/edit">수정</a></p>
-
-
   <p class = "text-right"><a href="/posts/<%=@post.id%>" data-method="delete" data-confirm="삭제할래?">삭제</a></p>
 
-
-
-<hr />
+<hr /> -->
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
