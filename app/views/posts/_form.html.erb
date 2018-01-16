@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this auction_post from being saved:</h2>
 
       <ul>
       <% @post.errors.full_messages.each do |message| %>
@@ -11,15 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br>
+      <%= f.text_area :content %>
+    </div>
+    <div class="field">
+      <%= file_field_tag("post[postimage]" ) %><br />
+
+    </div>
+
+    <div class="field">
+      <%= f.label :category %><br>
+      <%= f.select(:category) do %>
+        <% [['식품', "식품"], ['패션의류/잡화', "패션의류/잡화"],['뷰티', "뷰티"],
+        ['출산/유아동', "출산/유아동"],['반려동물용품', "반려동물용품"],['생활용품', "생활용품"],['가전/디지털', "가전/디지털"],
+      ['스포츠/레저', "스포츠/레저"],['도서/음반/DVD', "도서/음반/DVD"],['문구/완구', "문구/완구"]].each do |c| -%>
+          <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
+      <% end %>
+    </select>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
