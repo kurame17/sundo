@@ -1,0 +1,31 @@
+<h2><i class="far fa-handshake"></i>  Sign up</h2><br/>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <div class="form-inputs">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+      </div>
+      <%= f.text_field :email, required: true, autofocus: true, class: "form-control"  %>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Password</span>
+      </div>
+      <%= f.text_field :password, required: true, class: "form-control", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Password</span>
+      </div>
+    <%= f.text_field :password_confirmation, class: "form-control", required: true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
