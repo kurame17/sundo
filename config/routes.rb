@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
 
   resources :posts
+  get '/boards/:id' => 'posts#index'
 
   devise_for :users, controllers: {
     session: 'users/sessions'

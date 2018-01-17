@@ -3,7 +3,7 @@
 var posts = document.getElementsByClassName('post');
 for(var i=0; i<posts.length; i++) {
   // 2. 각 줄을 순회하며 이벤트 리스너를 달아준다.
-  boards[i].addEventListener('click', function() {
+  posts[i].addEventListener('click', function() {
     // 3. 해당 줄이 몇번째 글인지 파악한다(id 파악)
     console.log(this);
     var id = this.getAttribute('data-value');

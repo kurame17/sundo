@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: [:index]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like_post, :create_comment, :destroy_comment]
   before_action :authenticate_user!, except: [:index,:show]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.where(boardtype: params[:id])
   end
 
   # GET /posts/1
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def like_post
   user_like = Like.where(user_id: current_user.id, post_id: @post.id)
-  puts !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   if user_like.count > 0
     user_like.first.destroy
   else
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       post_id: @post.id
     )
   end
-  @like = Post.find(@post.id).likes.count
+  @like = @post.likes.count
 end
 
   # GET /posts/new
@@ -38,6 +38,7 @@ end
   end
 
   def create_comment
+
     @comment = Comment.create(
       user_id: current_user.id,
       post_id: @post.id,
