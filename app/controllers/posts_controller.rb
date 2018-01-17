@@ -46,6 +46,7 @@ end
     )
 
     puts params[:content]
+    redirect_to :back
   end
 
   def destroy_comment
