@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   }
 
   #comment
-  post '/posts/:id/add_comment' => 'posts#add_comment'
+  post '/posts/:id/create_comment' => 'posts#create_comment'
   delete 'posts/:id/destroy_comment/:comment_id' => 'posts#destroy_comment'
 
   #like
   post '/posts/:id/like' => 'posts#like_post'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

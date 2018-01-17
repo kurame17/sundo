@@ -2,61 +2,90 @@
 
   <figure class="figure">
 
-    <h2><figcaption class="figure-caption text-center">제목: <%= @post.title %><br /></h2>
-      <p>내용 : <%= @post.content%></p>
+    <h2><figcaption class="figure-caption text-center">
+      <%= @post.title %><br /></h2>
+      <p><%= @post.content%></p>
     </figcaption>
   </figure>
+  <p><%= @post.user_id%></p>
 </div>
 
 <!-- like버튼 추가 -->
 <% if @like.count > 0%>
-<button type="button" class="btn btn-warning" id="like-button"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+<button type="button" class="btn btn-danger" id="like"><i style="font-size:1em;" class="fas fa-moon"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
 
 <% else %>
-<button type="button" class="btn btn-light" id="like-button"><i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
+<button type="button" class="btn btn-light" id="like"><i style="font-size:1em;" class="fas fa-moon" data-remote="true"></i> (<span id="like-count"><%= @post.likes.count%></span>)</button>
 <%= link_to "좋아요", "/posts/#{@post.id}/like", data: {remote: true, method: "POST"}, class: "" %>
 <% end %>
 
-<p>
-  <h5>댓글창</h5>
-</p>
-<%@post.comments.each do |comment|%>
-  <p><%=comment.content%></p>
-  <p><%=comment.created_at%></p>
-  <p class = "text-right"><a href="/posts/<%=@post.id%>/destroy_comment/<%=comment.id%>" data-method="delete" data-confirm="덧글 삭제할래?">X</a></p>
-  <hr />
-<%end%>
-<br />
+<table class="table">
+  <tbody class="comment-list">
+    <% @post.comments.each do |comment| %>
+    <tr>
+      <td><%= comment.content %></td>
+      <td><button type="button">수정</button></td>
+      <td><button type="button" class = "destroy-comment" data-id = "<%= comment.id %>">삭제</button></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<form class="form-inline" id="comment-form" >
+  <input type="text" class="form-control" id="comment">
+  <button type="submit" class="btn btn-primary create-comment"><i class="fas fa-comments"></i>댓글달기</button>
+</form>
 
 
-<%= form_tag("/posts/#{@post.id}/add_comment", method: "post", multipart: true) do %>
-  <%= text_area_tag("content") %> <br />
-  <%= hidden_field_tag("post_id", value= "#{@post.id}" )%>
-  <%= button_tag("뿅" , class: "btn btn-primary ")  %>
-<% end %>
-
-
-<hr />
+<!-- <hr />
 
   <p class = "text-right"><a href="/posts/<%=@post.id%>/edit">수정</a></p>
 
-
   <p class = "text-right"><a href="/posts/<%=@post.id%>" data-method="delete" data-confirm="삭제할래?">삭제</a></p>
 
-
-
-<hr />
+<hr /> -->
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 
 <script>
-$(function(){
-  // 1.좋아요 버튼을 클릭하면
-    $('#like-button').on('click', function(){
-      console.log("버튼 눌리나?");
-      var tt = [1,2,3]
-
+$(function() {
+  $('#like').on('click', function() {
+    $.ajax({
+      url: '/posts/<%= @post.id %>/like',
+      method: 'POST'
     });
-});
+  });
+
+  // 1. 댓글 달기 버튼을 누르면
+  // 1-1. 댓글 form이 제출(submit)되면
+  $('#comment-form').on('submit', function(event) {
+    event.preventDefault();
+    // 2. input안에 들어있는 내용을 찾아서
+    var c = $('#comment').val();
+    // 3. 서버에 보내준다.
+    $.ajax({
+      url: "/posts/<%= @post.id %>/create_comment",
+      method: "POST",
+      data: {
+        content: c
+      }
+    });
+    // 4. 작성한 내용을 input 아래에 추가해준다.
+  })
+  $('destroy-comment').on('click',function(){
+    console.log($(this));
+//jqury 객체로 바뀐다..?
+    var id = $(this).data('id');
+    console.log(id);
+    if (confirm("이댓글 삭제 할거야?")){
+      $.ajax({
+        url: `/posts/<%=@post.id%>/comments/${id}`,
+        method: 'delete'
+      })
+    }
+  })
+
+})
+
 </script>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, except: [:index]
   before_action :authenticate_user!, except: [:index,:show]
   # GET /posts
   # GET /posts.json
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def like_post
   user_like = Like.where(user_id: current_user.id, post_id: @post.id)
+  puts !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if user_like.count > 0
     user_like.first.destroy
   else
@@ -36,12 +37,14 @@ end
     @post = Post.new
   end
 
-  def add_comment
-    comment = current_user.comments.new
-    comment.post_id = params[:post_id]
-    comment.content = params[:content]
-    comment.save
-    redirect_to :back
+  def create_comment
+    @comment = Comment.create(
+      user_id: current_user.id,
+      post_id: @post.id,
+      content: params[:content]
+    )
+
+    puts params[:content]
   end
 
   def destroy_comment
@@ -104,7 +107,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :postimage)
+      params.require(:post).permit(:boardtype, :title, :content, :postimage)
     end
 
     def is_post_owner?

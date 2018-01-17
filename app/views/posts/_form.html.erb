@@ -10,33 +10,40 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.select(:boardtype) do %>
+      <% [['대여', "rent"], ['경매', "auction"]].each do |c| -%>
+        <%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+    <% end %>
+  </select>
+</div>
+<div class="field">
+  <p>카테고리</p>
+  <%= f.select(:category) do %>
+    <% [['식품', "식품"], ['패션의류/잡화', "패션의류/잡화"],['뷰티', "뷰티"],
+    ['출산/유아동', "출산/유아동"],['반려동물용품', "반려동물용품"],['생활용품', "생활용품"],['가전/디지털', "가전/디지털"],
+  ['스포츠/레저', "스포츠/레저"],['도서/음반/DVD', "도서/음반/DVD"],['문구/완구', "문구/완구"]].each do |c| -%>
+      <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+  <% end %>
+</select>
+</div>
     <div class="field">
-      <%= f.text_field :boardtype %>
-    </div>
-    <div class="field">
-      <%= f.label :title %><br>
+      <p>제목</p>
       <%= f.text_field :title %>
     </div>
     <div class="field">
-      <%= f.label :content %><br>
+      <p>내용</p>
       <%= f.text_area :content %>
     </div>
     <div class="field">
+      <p>사진 첨부</p>
       <%= f.file_field :postimage %><br />
 
     </div>
 
-    <div class="field">
-      <%= f.label :category %><br>
-      <%= f.select(:category) do %>
-        <% [['식품', "식품"], ['패션의류/잡화', "패션의류/잡화"],['뷰티', "뷰티"],
-        ['출산/유아동', "출산/유아동"],['반려동물용품', "반려동물용품"],['생활용품', "생활용품"],['가전/디지털', "가전/디지털"],
-      ['스포츠/레저', "스포츠/레저"],['도서/음반/DVD', "도서/음반/DVD"],['문구/완구', "문구/완구"]].each do |c| -%>
-          <%= content_tag(:option, c.first, value: c.last) %>
-        <% end %>
-      <% end %>
-    </select>
-  </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
